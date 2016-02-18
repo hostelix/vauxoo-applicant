@@ -7,7 +7,7 @@ CREATE TABLE employee_department (
 	id serial NOT NULL,
 	name character varying(20),
 	description character varying(100),
-	CONSTRAINT id_employee_department_pkey PRIMARY KEY(id)
+	CONSTRAINT id_emp_depart_pkey PRIMARY KEY(id)
 );
 
 CREATE TABLE employee (
@@ -16,26 +16,26 @@ CREATE TABLE employee (
 	last_name character varying(20),
 	id_department integer,
 	id_jefe integer,
-	CONSTRAINT id_employee_pkey PRIMARY KEY(id),
-	CONSTRAINT employee_id_department_foreign FOREIGN KEY (id_department) 
+	CONSTRAINT id_emp_pkey PRIMARY KEY(id),
+	CONSTRAINT emp_id_department_foreign FOREIGN KEY (id_department) 
 		REFERENCES employee_department (id)
 );
 
-CREATE TABLE hobbies (
+CREATE TABLE employee_hobby (
 	id serial NOT NULL,
 	name character varying(20),
 	description character varying(100),
-	CONSTRAINT id_hobbies_pkey PRIMARY KEY(id)
+	CONSTRAINT id_hob_pkey PRIMARY KEY(id)
 );
 
 
-CREATE TABLE employee_hobby (
+CREATE TABLE hobbies_employee (
 	id_employee integer NOT NULL,
 	id_hobby integer NOT NULL,
-	CONSTRAINT employee_hobby_id_employee_foreign FOREIGN KEY (id_employee) 
+	CONSTRAINT hob_emp_id_employee_foreign FOREIGN KEY (id_employee) 
 		REFERENCES employee (id),
-	CONSTRAINT employee_hobby_id_hobby_foreign FOREIGN KEY (id_hobby) 
-		REFERENCES hobbies (id)
+	CONSTRAINT hob_emp_id_hobby_foreign FOREIGN KEY (id_hobby) 
+		REFERENCES employee_hobby (id)
 );
 
 
@@ -51,18 +51,10 @@ INSERT INTO employee VALUES ( 2,'Jose','Castillo',2,1);
 INSERT INTO employee VALUES ( 3,'Victor','Navas',3,1);
 INSERT INTO employee VALUES ( 4,'Julio','Colinas',4,1);
 
+INSERT INTO employee_hobby VALUES ( '1','Ver TV','Ver TV');
+INSERT INTO employee_hobby VALUES ( '2','Programar','Programar');
+INSERT INTO employee_hobby VALUES ( '3','Cocinar','Cocinar');
 
-INSERT INTO hobbies VALUES ( '1','Ver TV','Ver TV');
-INSERT INTO hobbies VALUES ( '2','Programar','Programar');
-INSERT INTO hobbies VALUES ( '3','Cocinar','Cocinar');
-INSERT INTO hobbies VALUES ( '4','Leer','Leer');
-
-INSERT INTO employee_hobby VALUES ( '1','1');
-INSERT INTO employee_hobby VALUES ( '1','2');
-INSERT INTO employee_hobby VALUES ( '2','1');
-INSERT INTO employee_hobby VALUES ( '2','4');
-INSERT INTO employee_hobby VALUES ( '3','3');
-INSERT INTO employee_hobby VALUES ( '3','2');
-INSERT INTO employee_hobby VALUES ( '4','2');
-INSERT INTO employee_hobby VALUES ( '4','4');
--- ...
+INSERT INTO hobbies_employee VALUES ( '1','1');
+INSERT INTO hobbies_employee VALUES ( '2','1');
+INSERT INTO hobbies_employee VALUES ( '3','3');
