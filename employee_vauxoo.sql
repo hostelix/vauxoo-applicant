@@ -15,6 +15,7 @@ CREATE TABLE employee (
 	first_name character varying(20),
 	last_name character varying(20),
 	id_department integer,
+	id_jefe integer,
 	CONSTRAINT id_employee_pkey PRIMARY KEY(id),
 	CONSTRAINT employee_id_department_foreign FOREIGN KEY (id_department) 
 		REFERENCES employee_department (id)
