@@ -20,7 +20,20 @@ CREATE TABLE employee (
 		REFERENCES employee_department (id)
 );
 
-CREATE TABLE employee_hobby (
+CREATE TABLE hobbies (
+	id serial NOT NULL,
+	name character varying(20),
+	description character varying(100),
+	CONSTRAINT id_hobbies_pkey PRIMARY KEY(id)
 );
 
+
+CREATE TABLE employee_hobby (
+	id_employee integer NOT NULL,
+	id_hobby integer NOT NULL,
+	CONSTRAINT employee_hobby_id_employee_foreign FOREIGN KEY (id_employee) 
+		REFERENCES employee (id),
+	CONSTRAINT employee_hobby_id_hobby_foreign FOREIGN KEY (id_hobby) 
+		REFERENCES hobbies (id)
+);
 -- ...
