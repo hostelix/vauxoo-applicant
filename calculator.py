@@ -18,7 +18,6 @@ class CalculatorClass(object):
             @acum int :accumulates sum the all elements in list
         """
         acum = 0
-
-        for n in num_list:
-            acum += n
+        for element in num_list:
+            acum += element
         return acum

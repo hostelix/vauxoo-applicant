@@ -21,15 +21,15 @@ class PrimeClass(object):
         num_int = int(num_int)
         prime = True
         count = 0
-        
+
         if num_int == 1:
             return not prime
 
-        for n in range(1, num_int+1):
-            if num_int % n == 0:
+        for num in range(1, num_int+1):
+            if num_int % num == 0:
                 count += 1
 
-            if count > 3:
+            if count >= 3:
                 prime = False
                 break
         return prime
